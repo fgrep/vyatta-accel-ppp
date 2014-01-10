@@ -1,0 +1,2 @@
+vyatta-accel-ppp: file-in-unusual-dir
+vyatta-accel-ppp: dir-or-file-in-opt
