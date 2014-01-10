@@ -1,0 +1,7 @@
+type: txt
+
+help: Specifies that interface name should be present in Called-Station-ID or in Calling-Station-ID or in both attributes.
+
+syntax:expression: pattern $VAR(@) "^called-sid|calling-sid|both+$" ; "Specifies that interface name should be present in Called-Station-ID or in Calling-Station-ID or in both attributes."
+
+val_help: txt; Valid values are called-sid, calling-sid, both or leave empty for no interface name in Called-Station-ID or in Calling-Station-ID

@@ -1,0 +1,4 @@
+type: u32
+help: Specifies PADI limit
+syntax:expression: $VAR(@) >=1 && $VAR(@) <= 4294967295; "PADI limit must be between 1-4294967295"
+val_help: u32:1-4294967295; PADI limit - no limit

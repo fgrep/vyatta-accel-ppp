@@ -1,0 +1,8 @@
+type: u32
+
+help: Specifies whether to handle TR101 tags
+
+syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
+                   "Must be 0 for disabled or 1 for enabled"
+
+val_help: u32:0-1; Specifies whether to handle TR101 tags - default: 0
