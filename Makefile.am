@@ -6,7 +6,7 @@ bin_sudo_usersdir = $(bindir)/sudo-users
 vprefix = /opt/vyatta
 vsbindir = $(vprefix)/sbin
 
-sbin_SCRIPTS =
+sbin_SCRIPTS = update-accel-ppp.pl
 
 bin_sudo_users_SCRIPTS =
 

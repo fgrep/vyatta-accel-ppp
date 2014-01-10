@@ -1,0 +1,3 @@
+help: Terminate session by calling station id
+allowed: echo -n 'calling-station-id'
+run: /usr/bin/accel-cmd terminate csid "$4"

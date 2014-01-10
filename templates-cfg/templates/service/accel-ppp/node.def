@@ -1,0 +1,5 @@
+help: High performance PPTP/L2TP/PPPoE server
+
+priority: 900
+
+end: sudo /opt/vyatta/sbin/update-accel-ppp.pl || exit 1

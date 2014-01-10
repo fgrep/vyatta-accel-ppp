@@ -1,0 +1,3 @@
+help: Terminate session by interface name
+allowed: echo -n 'Interface'
+run: /usr/bin/accel-cmd terminate if "$4"

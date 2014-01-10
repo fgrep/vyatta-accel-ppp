@@ -1,0 +1,3 @@
+help: Terminate all sessions
+allowed: ""
+run: /usr/bin/accel-cmd terminate all

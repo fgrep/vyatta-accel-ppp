@@ -1,0 +1,6 @@
+type: txt
+
+help: Specifies delays to send PADO (ms)
+
+syntax:expression: pattern $VAR(@) "^[a-zA-Z0-9]+$" ; "Specifies delays (also in condition of connection count) to send PADO (ms). Last delay in list may be -1 which means don't accept new connections. List have to be sorted by count key."
+

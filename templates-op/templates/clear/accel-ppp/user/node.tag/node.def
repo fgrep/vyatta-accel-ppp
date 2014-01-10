@@ -1,0 +1,3 @@
+help: Terminate session by user name
+allowed: echo -n 'username'
+run: /usr/bin/accel-cmd terminate username "$4"

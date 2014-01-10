@@ -1,0 +1,3 @@
+help: Show active accel-ppp servers sessions
+allowed: ""
+run: /usr/bin/accel-cmd show sessions

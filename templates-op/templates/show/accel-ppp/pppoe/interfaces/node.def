@@ -1,0 +1,3 @@
+help: Show interfaces on which pppoe server started
+allowed: ""
+run: /usr/bin/accel-cmd pppoe interface show

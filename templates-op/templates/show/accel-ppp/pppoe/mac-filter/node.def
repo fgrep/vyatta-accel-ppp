@@ -1,0 +1,3 @@
+help: Show current mac-filter list
+allowed: ""
+run: /usr/bin/accel-cmd pppoe mac-filter show

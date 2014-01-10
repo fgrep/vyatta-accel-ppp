@@ -1,0 +1,2 @@
+help: Restart accel-ppp service
+run:  sudo /usr/sbin/invoke-rc.d accel-ppp restart

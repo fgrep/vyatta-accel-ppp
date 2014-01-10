@@ -1,0 +1,3 @@
+help: Terminate session by session id
+allowed: echo -n 'session-id'
+run: /usr/bin/accel-cmd terminate sid "$4"
