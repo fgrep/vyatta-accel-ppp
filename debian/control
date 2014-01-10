@@ -12,4 +12,4 @@ Depends: vyatta-cfg-system,
  vyatta-op,
  ${misc:Depends}
 Replaces: vyatta-accel-ppp
-Description: Vyatta package for accel-ppp service
+Description: Vyatta package for accel-ppp services
