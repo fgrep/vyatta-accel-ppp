@@ -2,5 +2,3 @@ The Debian Package vyatta-accel-ppp
 ----------------------------------
 
 This package is a Vyatta package for accel-ppp services.
-
- -- Cesar Fazan <cesar.fazan@gmail.com>  Fri, 10 Jan 2014 18:34:11 -0200

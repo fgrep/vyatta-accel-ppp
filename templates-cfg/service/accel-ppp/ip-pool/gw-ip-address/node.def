@@ -1,2 +1,2 @@
-type: txt
-help: TODO
+type: ipv4
+help: Specifies single IP address to be used as local address of ppp interfaces

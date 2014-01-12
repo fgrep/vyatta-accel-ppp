@@ -545,64 +545,89 @@ sub get_ppp_opts {
 		} else {
 			$config .= "vendor=WISPr\n";
 		}
-		if (defined($self->{_shaper_attr})) {
+
+		if (defined($self->{_shaper_attr}) && !defined($self->{_shaper_attr_down}) && !defined($self->{_shaper_attr_up})) {
 			$config .= "attr=$self->{_shaper_attr}\n";
-		}
-		if (defined($self->{_shaper_attr_down})) {
-			$config .= "attr-down=$self->{_shaper_attr_down}\n";
 		} else {
+			return (undef, "Cannot use attr and attr-down or attr-up at the same time.");
+		}
+
+		if (defined($self->{_shaper_attr_down}) && !defined($self->{_shaper_attr})) {
+			$config .= "attr-down=$self->{_shaper_attr_down}\n";
+		} elsif(defined($self->{_shaper_attr_down}) && defined($self->{_shaper_attr})) {
+			return (undef, "Cannot use attr and attr-down at the same time.");
+		} elsif(!defined($self->{_shaper_attr_down}) && !defined($self->{_shaper_attr})) {
 			$config .= "attr-down=WISPr-Bandwidth-Max-Down\n";
 		}
-		if (defined($self->{_shaper_attr_up})) {
+
+		if (defined($self->{_shaper_attr_up}) && !defined($self->{_shaper_attr})) {
 			$config .= "attr-up=$self->{_shaper_attr_up}\n";
-		} else {
+		} elsif(defined($self->{_shaper_attr_up}) && defined($self->{_shaper_attr})) {
+			 return (undef, "Cannot use attr and attr-up at the same time.");
+		} elsif(!defined($self->{_shaper_attr_up}) && !defined($self->{_shaper_attr})) {
 			$config .= "attr-up=WISPr-Bandwidth-Max-Up\n";
 		}
+
 		if (defined($self->{_shaper_burst_factor})) {
 			$config .= "burst-factor=$self->{_shaper_burst_factor}\n";
 		}
+
 		if (defined($self->{_shaper_down_burst_factor})) {
 			$config .= "down-burst-factor=$self->{_shaper_down_burst_factor}\n";
 		}
+
 		if (defined($self->{_shaper_up_burst_factor})) {
 			$config .= "up-burst-factor=$self->{_shaper_up_burst_factor}\n";
 		}
+
 		if (defined($self->{_shaper_latency})) {
 			$config .= "latency=$self->{_shaper_latency}\n";
 		}
+
 		if (defined($self->{_shaper_mpu})) {
 			$config .= "mpu=$self->{_shaper_mpu}\n";
 		}
+
 		if (defined($self->{_shaper_mtu})) {
 			$config .= "mtu=$self->{_shaper_mtu}\n";
 		}
+
 		if (defined($self->{_shaper_r2q})) {
 			$config .= "r2q=$self->{_shaper_r2q}\n";
 		}
+
 		if (defined($self->{_shaper_quantum})) {
 			$config .= "quantum=$self->{_shaper_quantum}\n";
 		}
+
 		if (defined($self->{_shaper_cburst})) {
 			$config .= "cburst=$self->{_shaper_cburst}\n";
 		}
+
 		if (defined($self->{_shaper_up_limiter})) {
 			$config .= "up-limiter=$self->{_shaper_up_limiter}\n";
 		}
+
 		if (defined($self->{_shaper_down_limiter})) {
 			$config .= "down-limiter=$self->{_shaper_down_limiter}\n";
 		}
+
 		if (defined($self->{_shaper_leaf_qdisc})) {
 			$config .= "leaf-qdisc=$self->{_shaper_leaf_qdisc}\n";
 		}
+
 		if (defined($self->{_shaper_rate_multiplier})) {
 			$config .= "rate-multiplier=$self->{_shaper_rate_multiplier}\n";
 		}
+
 		if (defined($self->{_shaper_ifb})) {
 			$config .= "ifb=$self->{_shaper_ifb}\n";
 		}
+
 		if (defined($self->{_shaper_time_range})) {
 			$config .= "time-range=$self->{_shaper_time_range}\n";
 		}
+
 		if (defined($self->{_shaper_verbose})) {
 			$config .= "verbose=$self->{_shaper_verbose}\n";
 		} else {
