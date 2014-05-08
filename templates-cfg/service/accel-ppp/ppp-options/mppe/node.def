@@ -1,2 +1,6 @@
 type: txt
-help: TODO
+help: Specifies mppe negotiation preference.
+
+syntax:expression: $VAR(@) in "require", "prefer", "deny"; "If this option is absent session count control is turned off."
+
+val_help: var:"require", "prefer", "deny"

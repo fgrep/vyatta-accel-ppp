@@ -1,2 +1,2 @@
 type: txt
-help: TODO
+help: Disable CCP negotiation if set to zero.

@@ -1,2 +1,2 @@
 type: txt
-help: TODO
+help: If this option is given and greater then 0 then ppp module will send LCP Echo-Request packets every n seconds. 

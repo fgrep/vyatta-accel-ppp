@@ -1,2 +1,4 @@
 type: txt
-help: TODO
+help: Specifies IPv4 (IPCP) negotioation algorithm.
+
+syntax:expression: $VAR(@) in "deny", "allow", "prefer", "require"

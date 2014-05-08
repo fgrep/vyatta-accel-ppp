@@ -1,2 +1,7 @@
 type: txt
-help: TODO
+help: Specifies whether to accept peer's value of interface identifier.t
+
+syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
+                   "Must be 0 for deny or 1 for accept"
+
+val_help: u32:0-1

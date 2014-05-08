@@ -1,2 +1,4 @@
 type: txt
-help: TODO
+help: Specifies peer interface identifier for IPv6.
+
+syntax:expression: $VAR(@) in "x:x:x:x", "random", "ipv4", "calling-sid"
