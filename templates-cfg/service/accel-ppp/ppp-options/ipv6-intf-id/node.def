@@ -1,2 +1,4 @@
 type: txt
-help: TODO
+help: Specifies fixed or random interface identifier for IPv6.
+
+syntax:expression: $VAR(@) in "x:x:x:x", "random"

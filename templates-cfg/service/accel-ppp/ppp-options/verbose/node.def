@@ -1,2 +1,9 @@
-type: txt
-help: TODO
+type: u32
+
+help: Specifies whether to produce verbose logging
+
+syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
+                   "Must be 0 for disabled or 1 for enabled"
+
+val_help: 0 ; verbose logging disabled 
+val_help: 1 ; verbose logging enabled
