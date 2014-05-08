@@ -1,2 +1,5 @@
-type: txt
-help: TODO
+type: u32
+help: Specifies whether each session of same user will be logger separately to directory specified by per-user-dir and subdirectory which name is user name and to file which name os unique session identifier. 
+
+syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
+                        "Must be 0 for disabled or 1 for enabled"

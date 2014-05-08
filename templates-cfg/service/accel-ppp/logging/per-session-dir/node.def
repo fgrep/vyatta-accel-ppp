@@ -1,2 +1,2 @@
 type: txt
-help: TODO
+help: Directory for session logs. If specified each session will be logged separately to file which name is unique session identifier
