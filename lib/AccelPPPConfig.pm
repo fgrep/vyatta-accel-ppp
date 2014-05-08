@@ -302,6 +302,7 @@ sub get_ppp_opts {
 	$loadmodules .= "auth_chap_md5\n";
 	$loadmodules .= "ippool\n";
 	$loadmodules .= "shaper\n";
+#	$loadmodules .= "ipset\n";
 
 	$config .= "[core]\n";
 	$config .= "log-error=/var/log/accel-ppp/core.log\n";
@@ -318,6 +319,15 @@ sub get_ppp_opts {
 	$config .= "#telnet=127.0.0.1:2000\n";
 	$config .= "tcp=127.0.0.1:2001\n\n";
 
+	$config .= "[common]\n";
+	$config .= "#telnet=127.0.0.1:2000\n";
+	$config .= "tcp=127.0.0.1:2001\n\n";
+	if (defined($self->{_ppp_sid_case})) {
+		$config .= "sid-case=$self->{_ppp_sid_case}\n";
+	}
+	if (defined($self->{_ppp_single_session})) {
+		$config .= "single-session=$self->{_ppp_single_session}\n";
+	}
 
 	$config .= "[dns]\n";	
 	if (defined($self->{_global_dns1})) {
