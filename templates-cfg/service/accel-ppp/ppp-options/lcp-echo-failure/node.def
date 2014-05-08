@@ -1,2 +1,2 @@
-type: txt
+type: u32
 help: Specifies maximum number of Echo-Requests may be sent without valid reply, if exceeds connection will be terminated.

@@ -1,2 +1,2 @@
-type: txt
+type: u32
 help: Disable CCP negotiation if set to zero.

@@ -1,7 +1,7 @@
-type: txt
+type: u32
 help: Specifies whether to check if IP already assigned to other ppp interface (default 0).
 
 syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
-                   "Must be 0 for disabled or 1 for enabled"
-
-val_help: u32:0-1
+			"Must be 0 for disabled or 1 for enabled"
+val_help: 0; disabled
+val_help: 1; enabled                                                                                                                                                                                                 

@@ -2,3 +2,8 @@ type: txt
 help: Specifies IPv4 (IPCP) negotioation algorithm.
 
 syntax:expression: $VAR(@) in "deny", "allow", "prefer", "require"
+
+val_help: deny ; don't negotiate IPv4
+val_help: allow ; negotiate IPv4 only if client requests
+val_help: prefer ; ask client for IPv4 negotiation, don't fail if he rejects
+val_help: require ; require IPv4 negotiation

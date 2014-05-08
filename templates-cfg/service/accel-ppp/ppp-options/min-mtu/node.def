@@ -1,2 +1,2 @@
-type: txt
+type: u32
 help: Minimum acceptable MTU. If client will try to negotiate less then specified then it will be NAKed or disconnected if rejects greater MTU. 

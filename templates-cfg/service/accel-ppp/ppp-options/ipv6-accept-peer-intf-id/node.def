@@ -1,7 +1,8 @@
 type: txt
-help: Specifies whether to accept peer's value of interface identifier.t
+help: Specifies whether to accept peer's value of interface identifier.
 
 syntax:expression: $VAR(@) >= 0 && $VAR(@) <= 1;
                    "Must be 0 for deny or 1 for accept"
 
-val_help: u32:0-1
+val_help: 0 ; deny
+val_help: 1 ; accept
