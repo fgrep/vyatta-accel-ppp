@@ -301,7 +301,6 @@ sub get_ppp_opts {
 	$loadmodules .= "log_file\n";
 	$loadmodules .= "auth_chap_md5\n";
 	$loadmodules .= "ippool\n";
-	$loadmodules .= "shaper\n";
 
 	$config .= "[core]\n";
 	$config .= "log-error=/var/log/accel-ppp/core.log\n";
@@ -542,8 +541,6 @@ sub get_ppp_opts {
 
 		if (defined($self->{_shaper_vendor})) {
 			$config .= "vendor=$self->{_shaper_vendor}\n";
-		} else {
-			$config .= "vendor=WISPr\n";
 		}
 
 		if (defined($self->{_shaper_attr}) && !defined($self->{_shaper_attr_down}) && !defined($self->{_shaper_attr_up})) {

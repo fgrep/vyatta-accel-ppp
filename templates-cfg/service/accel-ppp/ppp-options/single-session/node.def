@@ -1,2 +1,7 @@
 type: txt
-help: TODO
+help: Specifies whether to control sessions count.
+
+syntax:expression: $VAR(@) in "replace", "deny"; "If this option is absent session count control is turned off."
+
+val_help: replace ; accel-ppp will terminate first session when second is authorized
+val_help: deny ; accel-ppp will deny second session authorization

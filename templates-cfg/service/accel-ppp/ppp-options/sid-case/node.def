@@ -1,2 +1,4 @@
 type: txt
-help: TODO
+help: Specifies in which case generate session identifier (default lower).
+
+syntax:expression: $VAR(@) in "upper", "lower"

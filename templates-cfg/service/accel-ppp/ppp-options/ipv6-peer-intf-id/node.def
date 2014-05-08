@@ -1,2 +1,9 @@
 type: txt
-help: TODO
+help: Specifies peer interface identifier for IPv6.
+
+syntax:expression: $VAR(@) in "x:x:x:x", "random", "ipv4", "calling-sid"
+
+val_help: x:x:x:x ; fixed interface identifier
+val_help: random ; random interface identifier
+val_help: ipv4 ; calculate interface identifier from IPv4 address, for example 192:168:0:1
+val_help: calling-sid ; calculate interface identifier from Calling-Station-Id
