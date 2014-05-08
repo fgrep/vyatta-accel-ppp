@@ -301,7 +301,6 @@ sub get_ppp_opts {
 	$loadmodules .= "log_file\n";
 	$loadmodules .= "auth_chap_md5\n";
 	$loadmodules .= "ippool\n";
-	$loadmodules .= "shaper\n";
 
 	$config .= "[core]\n";
 	$config .= "log-error=/var/log/accel-ppp/core.log\n";
