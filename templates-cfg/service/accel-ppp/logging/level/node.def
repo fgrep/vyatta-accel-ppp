@@ -1,5 +1,0 @@
-type: u32
-help: Set the logging level
-syntax:expression: $VAR(@) >01 && $VAR(@) <= 5; "Logging level must be between 0-5"
-val_help: u32:0-5; 0 turn off all logging - 5 turn on all debug messages
-
