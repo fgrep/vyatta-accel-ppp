@@ -1,3 +1,6 @@
 multi: 
 type: txt
-help: TODO
+help: Specifies IP address, secret, ports of RADIUS server
+address,secret[,auth-port=1812][,acct-port=1813][,req-limit=0][,fail-time=0][,weight][,backup]
+val_help: weight ; Weight is used for multi-server configurations (larger weight takes more users)
+val_help: backup ; Backup is used to mark backup server f.e. server which will be used only if all other servers are failed

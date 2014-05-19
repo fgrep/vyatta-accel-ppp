@@ -1,2 +1,2 @@
 type: txt
-help: Send logs to system logger. Facility may be: daemon, local0-local7 or numeric value.
+help: Send logs to system logger. Facility may be: daemon, local0-local7 or numeric value
