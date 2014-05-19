@@ -1,0 +1,9 @@
+type: txt
+
+help: Specifies how to represent Called-Station-ID 
+
+syntax:expression: pattern $VAR(@) "^(ifname|mac|ifname(:mac)[a-z:]?)$" ; "Specifies how interface name should be present in Called-Station-ID"
+
+val_help: ifname ; Called-Station-ID will contain name of interface accepted request
+val_help: mac ; Called-Station-ID will contain mac address of interface accepted request
+val_help: ifname:mac ; Called-Station-Id will contain both name and mac of interface
