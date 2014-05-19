@@ -6,8 +6,8 @@ use Vyatta::Config;
 use Vyatta::Misc;
 use NetAddr::IP;
 
-my $cfg_delim_begin = '### Vyatta Accel PPPOE Begin ###';
-my $cfg_delim_end = '### Vyatta Accel PPPOE End ###';
+my $cfg_delim_begin = '### Vyatta Accel PPPoE Begin ###';
+my $cfg_delim_end = '### Vyatta Accel PPPoE End ###';
 
 # GLOBAL
 # PPPOE
@@ -17,9 +17,13 @@ my %fields = (
 	_global_dns2			=> undef,
 	_global_wins1			=> undef,
 	_global_wins2			=> undef,
-	_global_ip_pool			=> [],
+	_ip_pool			=> undef,
+	_ip_pool_gw_ip_addr		=> undef,
+	_ip_pool_gw			=> undef,
+	_ip_pool_tunnel			=> undef,
 	_pppoe				=> undef,
 	_pppoe_ac			=> undef,
+	_pppoe_called_sid               => undef,
 	_pppoe_ifname_in_sid		=> undef,
 	_pppoe_intfs			=> [],
 	_pppoe_ip_pool			=> undef,
@@ -124,6 +128,7 @@ sub setup_base {
 	if (defined($config->$vals_func('pppoe'))) {
 		$self->{_pppoe}			= 1;
 		$self->{_pppoe_ac}		= $config->$val_func('pppoe access-concentrator');
+		$self->{_pppoe_called_sid}   	= $config->$val_func('pppoe called-sid');
 		$self->{_pppoe_ifname_in_sid}	= $config->$val_func('pppoe ifname-in-sid');
 		$self->{_pppoe_ip_pool}		= $config->$val_func('pppoe ip-pool');
 		$self->{_pppoe_mac_filter}	= $config->$val_func('pppoe mac-filter');
@@ -203,6 +208,13 @@ sub setup_base {
 		$self->{_shaper_time_range}		= $config->$val_func('shaper time-range');
 		$self->{_shaper_verbose}		= $config->$val_func('shaper verbose');
 	}
+	if (defined($config->$vals_func('ip_pool'))) {
+		$self->{_ip_pool}			= 1;
+		$self->{_ip_pool_gw_ip_addr}		= $config->$val_func('ip-pool gw-ip-address');
+		$self->{_ip_pool_gw}			= $config->$val_func('ip-pool gw');
+		$self->{_ip_pool_tunnel}		= $config->$val_func('ip-pool tunnel');
+	}
+
 	return 0;
 }
 
@@ -300,7 +312,6 @@ sub get_ppp_opts {
 	$loadmodules .= "[modules]\n";
 	$loadmodules .= "log_file\n";
 	$loadmodules .= "auth_chap_md5\n";
-	$loadmodules .= "ippool\n";
 
 	$config .= "[core]\n";
 	$config .= "log-error=/var/log/accel-ppp/core.log\n";
@@ -316,7 +327,6 @@ sub get_ppp_opts {
 	$config .= "[cli]\n";
 	$config .= "#telnet=127.0.0.1:2000\n";
 	$config .= "tcp=127.0.0.1:2001\n\n";
-
 
 	$config .= "[dns]\n";	
 	if (defined($self->{_global_dns1})) {
@@ -335,7 +345,22 @@ sub get_ppp_opts {
 	}
 	$config .= "\n";
 
+        if (defined($self->{_ip_pool})) {
 
+		$loadmodules .= "ippool\n";
+		$config .="[ip-pool]\n";
+
+		if (defined($self->{_ip_pool_gw_ip_addr})) {
+			$config .= "gw-ip-address=$self->{_ip_pool_gw_ip_addr}\n";
+		}
+		if (defined($self->{_ip_pool_gw})) {
+			$config .= "gw=$self->{_ip_pool_gw}\n";
+		}
+		if (defined($self->{_ip_pool_tunnel})) {
+			$config .= "tunnel=$self->{_ip_pool_tunnel}\n";
+		}
+		$config .= "\n";
+	}
 	# Generate PPPoE config
 	if (defined($self->{_pppoe})) {
 		return (undef, "Must define at least 1 interface")
@@ -362,6 +387,9 @@ sub get_ppp_opts {
 		}
 		if (defined($self->{_pppoe_mac_filter})) {
 			$config .= "mac-filter=$self->{_pppoe_mac_filter}\n";
+		}
+		if (defined($self->{_pppoe_called_sid})) {
+			$config .= "called-sid=$self->{_pppoe_called_sid}\n";
 		}
 		if (defined($self->{_pppoe_ifname_in_sid})) {
 			$config .= "ifname-in-sid=$self->{_pppoe_ifname_in_sid}\n";
