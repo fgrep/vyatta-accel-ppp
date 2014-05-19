@@ -1,2 +1,8 @@
 type: txt
-help: TODO mpppe
+help: Specifies mppe negotiation preference
+
+syntax:expression: $VAR(@) in "require", "allow", "deny"; "\"$VAR(@)\" is not a valid mppe option"
+
+val_help: require ; Ask client for mppe, if it rejects drop connection
+val_help: allow ; Ask client for mppe, if it rejects don't fail
+val_help: deny ; Deny mppe
