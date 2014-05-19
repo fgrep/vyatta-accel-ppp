@@ -1,0 +1,2 @@
+type: txt
+help: Directory for user logs. If specified all sessions of same user will be logged to file which name is user name

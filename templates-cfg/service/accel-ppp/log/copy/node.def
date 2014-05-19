@@ -1,0 +1,2 @@
+type: u32
+help: Specifies whether to duplicate session log to general log
