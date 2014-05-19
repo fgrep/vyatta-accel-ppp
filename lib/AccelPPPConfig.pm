@@ -21,6 +21,15 @@ my %fields = (
 	_ip_pool_gw_ip_addr		=> undef,
 	_ip_pool_gw			=> undef,
 	_ip_pool_tunnel			=> undef,
+	_log				=> undef,
+	_log_file			=> undef,
+	_log_emerg			=> undef,
+	_log_fail			=> undef,
+	_log_level			=> undef,
+	_log_copy			=> undef,
+	_log_per_sess_dir		=> undef,
+	_log_per_user_dir		=> undef,
+	_log_per_sess			=> undef,
 	_pppoe				=> undef,
 	_pppoe_ac			=> undef,
 	_pppoe_called_sid               => undef,
@@ -215,6 +224,18 @@ sub setup_base {
 		$self->{_ip_pool_tunnel}		= $config->$val_func('ip-pool tunnel');
 	}
 
+	if (defined($config->$vals_func('log'))) {
+		$self->{_log}				= 1;
+		$self->{_log_file}			= $config->$val_func('log log-file');
+		$self->{_log_emerg}			= $config->$val_func('log log-emerg');
+		$self->{_log_fail}			= $config->$val_func('log log-fail-file');
+		$self->{_log_level}			= $config->$val_func('log level');
+		$self->{_log_copy}			= $config->$val_func('log copy');
+		$self->{_log_per_sess_dir}		= $config->$val_func('log per-session-dir');
+		$self->{_log_per_user_dir}		= $config->$val_func('log per-user-dir');
+		$self->{_log_per_sess}			= $config->$val_func('log per-session');
+	}
+
 	return 0;
 }
 
@@ -317,13 +338,6 @@ sub get_ppp_opts {
 	$config .= "log-error=/var/log/accel-ppp/core.log\n";
 	$config .= "thread-count=2\n\n";
 
-	$config .= "[log]\n";
-	$config .= "log-file=/var/log/accel-ppp/accel-ppp.log\n";
-	$config .= "log-emerg=/var/log/accel-ppp/emerg.log\n";
-	$config .= "log-fail-file=/var/log/accel-ppp/auth-fail.log\n";
-	$config .= "level=1\n";
-	$config .= "copy=1\n\n";
-
 	$config .= "[cli]\n";
 	$config .= "#telnet=127.0.0.1:2000\n";
 	$config .= "tcp=127.0.0.1:2001\n\n";
@@ -361,6 +375,38 @@ sub get_ppp_opts {
 		}
 		$config .= "\n";
 	}
+
+	if (defined($self->{_log})) {
+
+		$config .="[log]\n";
+
+		if (defined($self->{_log_file})) {
+			$config .= "log-file=$self->{_log_file}\n";
+		}
+		if (defined($self->{_log_emerg})) {
+			$config .= "log-emerg=$self->{_log_emerg}\n";
+		}
+		if (defined($self->{_log_fail})) {
+			$config .= "log-fail-file=$self->{_log_fail}\n";
+		}
+		if (defined($self->{_log_level})) {
+			$config .= "level=$self->{_log_level}\n";
+		}
+		if (defined($self->{_log_copy})) {
+			$config .= "copy=$self->{_log_copy}\n";
+		}
+		if (defined($self->{_log_per_sess_dir})) {
+			$config .= "per-session-dir=$self->{_log_per_sess_dir}\n";
+		}
+		if (defined($self->{_log_per_user_dir})) {
+			$config .= "per-user-dir=$self->{_log_per_user_dir}\n";
+		}
+		if (defined($self->{_log_per_sess})) {
+			$config .= "per-session=$self->{_log_per_sess}\n";
+		}
+		$config .= "\n";
+	}
+
 	# Generate PPPoE config
 	if (defined($self->{_pppoe})) {
 		return (undef, "Must define at least 1 interface")
