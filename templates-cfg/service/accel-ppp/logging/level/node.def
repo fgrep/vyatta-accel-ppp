@@ -1,9 +1,0 @@
-type: u32
-help: Set the logging level
-syntax:expression: $VAR(@) >01 && $VAR(@) <= 5; "Logging level must be between 0-5"
-val_help: 0 ; turn off any logging
-val_help: 1 ; log only error messages
-val_help: 2 ; log error and warning messages
-val_help: 3 ; log error, warning and minimum information messages (use this level in conjuction with verbose option of other modules if you need verbose logging)
-val_help: 4 ; log error, warning and full information messages
-val_help: 5 ; log all messages including debug messages

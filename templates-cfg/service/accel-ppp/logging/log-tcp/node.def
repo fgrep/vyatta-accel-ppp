@@ -1,2 +1,0 @@
-type: txt
-help: Specifies IPv4 address and port to send logs to. You may specify multiple log-tcp options
